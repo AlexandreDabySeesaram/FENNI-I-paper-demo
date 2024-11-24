@@ -64,3 +64,5 @@ jobs:
               uses: actions/deploy-pages@v4
               with:
                 folder: _build/html
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
