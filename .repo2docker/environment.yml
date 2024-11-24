@@ -36,10 +36,9 @@ dependencies:
   - pip
   - pip:
   # computing stuff
-    - vtk
     - gmsh
     - meshio
     - matplotlib
 
   # mechanics stuff
-    # - neurom-py==3.1.17
+    # - neurom-py==3.1.20
