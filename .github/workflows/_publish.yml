@@ -122,9 +122,10 @@ jobs:
         - name: Convert repository name to lowercase
           id: repo_name_lowercase
           run: |
-            echo "REPO_NAME=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+            echo "REPO_NAME=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')"
+            echo "REPO_NAME=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
             echo The repository name in lowercase is: $REPO_NAME
-            env
+            cat $GITHUB_ENV
 
         # Display Docker images
         - name: Show Docker images
