@@ -1,0 +1,8 @@
+.DS_Store
+.gitlab-ci.yml
+.ipynb_checkpoints
+_build
+__pycache__
+*.vtk
+*.msh
+
