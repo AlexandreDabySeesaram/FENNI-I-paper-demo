@@ -42,4 +42,4 @@ dependencies:
     - matplotlib
 
   # mechanics stuff
-    - neurom-py==3.1.17
+    # - neurom-py==3.1.17
