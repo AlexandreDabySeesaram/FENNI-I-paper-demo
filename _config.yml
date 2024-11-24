@@ -40,7 +40,7 @@ latex:
 ############################################################# Launch settings ###
 
 repository:
-  url: https://github.com/AlexandreDabySeesaram/FENNI-paper-demos
+  url: https://github.com/AlexandreDabySeesaram/FENNI-I-paper-demo
   path_to_book: .
   branch: main
 
