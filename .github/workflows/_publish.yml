@@ -52,9 +52,9 @@ jobs:
             pages: write
             id-token: write
 
-        # environment:
-        #     name: github-pages
-        #     url: ${{ steps.deployment.outputs.page_url }}
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
 
 
 
@@ -68,7 +68,7 @@ jobs:
             - name: Download Build Artifacts
               uses: actions/download-artifact@v3
               with:
-                name: jupyter-book-build
+                artifact_name: jupyter-book-build
 
             - name: Configure Pages
               uses: actions/configure-pages@v4
