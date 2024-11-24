@@ -124,8 +124,9 @@ jobs:
           run: |
             echo "REPO_NAME=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')"
             echo "REPO_NAME=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
-            echo The repository name in lowercase is: $REPO_NAME
+            echo $REPO_NAME
             cat $GITHUB_ENV
+            echo ${{ env.REPO_NAME }}
 
         # Display Docker images
         - name: Show Docker images
