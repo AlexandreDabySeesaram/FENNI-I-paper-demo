@@ -69,6 +69,7 @@ jobs:
               uses: actions/download-artifact@v3
               with:
                 name: jupyter-book-build
+                path: './jupyter-book-build/'
 
             - name: Configure Pages
               uses: actions/configure-pages@v5
@@ -90,7 +91,7 @@ jobs:
               uses: actions/deploy-pages@v4
 
 
-              with:
-                publish_dir: ./jupyter-book-build/
+            #   with:
+            #     publish_dir: ./jupyter-book-build/
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
