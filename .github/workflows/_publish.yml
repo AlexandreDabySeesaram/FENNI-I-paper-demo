@@ -117,6 +117,12 @@ jobs:
             sudo apt update
             sudo apt install -y docker-ce docker-ce-cli containerd.io
 
+
+        # Convert repository name to lowercase
+        - name: Convert repository name to lowercase
+          id: repo_name_lowercase
+          run: echo "REPO_NAME=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+
         # Display Docker images
         - name: Show Docker images
           run: docker images
@@ -124,8 +130,8 @@ jobs:
         # Remove existing images (if any)
         - name: Remove existing images
           run: |
-            docker rmi -f ghcr.io/${{ github.repository }} || true
-            docker images --filter="reference=ghcr.io/${{ github.repository }}" --format="{{.Repository}}:{{.Tag}}" | xargs docker rmi || true
+            docker rmi -f ghcr.io/${{ env.REPO_NAME }} || true
+            docker images --filter="reference=ghcr.io/${{ env.REPO_NAME }}" --format="{{.Repository}}:{{.Tag}}" | xargs docker rmi || true
             docker image prune -f
 
         # Install jupyter-repo2docker
@@ -134,25 +140,25 @@ jobs:
 
         # Build the Docker image using repo2docker
         - name: Build Docker image
-          run: repo2docker --no-run --user-id 1000 --user-name jovyan --image-name ghcr.io/${{ github.repository }} .repo2docker
+          run: repo2docker --no-run --user-id 1000 --user-name jovyan --image-name ghcr.io/${{ env.REPO_NAME }} .repo2docker
 
         # Tag the Docker image
         - name: Tag Docker image
-          run: docker image tag ghcr.io/${{ github.repository }} ghcr.io/${{ github.repository }}:${{ github.sha }}
+          run: docker image tag ghcr.io/${{ env.REPO_NAME }} ghcr.io/${{ env.REPO_NAME }}:${{ github.sha }}
 
         # Login to GHCR
         - name: Log in to GHCR
           uses: docker/login-action@v2
           with:
             registry: ghcr.io
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            username: ${{ github.actor }}
+            password: ${{ secrets.GHCR_PAT }}
 
         # Push Docker images to GHCR
         - name: Push Docker image to GHCR
           run: |
-            docker push ghcr.io/${{ github.repository }}
-            docker push ghcr.io/${{ github.repository }}:${{ github.sha }}
+            docker push ghcr.io/${{ env.REPO_NAME }}
+            docker push ghcr.io/${{ env.REPO_NAME }}:${{ github.sha }}
 
         # Log out from GHCR
         - name: Log out from GHCR
