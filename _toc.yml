@@ -4,8 +4,10 @@
 format: jb-book
 root: index
 chapters:
-- file: demos/Notebook_Fig_8ac
-- file: demos/Notebook_Fig_8bd
-- file: demos/Notebook_Fig_9
-- file: demos/Notebook_Fig_10
-- file: demos/Notebook_Fig_12_13_15
+- file: demos/Notebook_3D_Table_2_3_Evaluation
+- file: demos/Notebook_3D_Table_2_3_Experiments
+- file: demos/Notebook_Fig_10ac
+- file: demos/Notebook_Fig_10bd
+- file: demos/Notebook_Fig_11
+- file: demos/Notebook_Fig_12
+- file: demos/Notebook_Fig_13

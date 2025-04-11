@@ -6,3 +6,7 @@ __pycache__
 *.vtk
 *.msh
 
+demos/Geometries/Cube_hole_order_1_0.062.xml
+demos/GroundTruth/Cube_eval_coordinates_0.05.npy
+demos/GroundTruth/Cube_hole_order_1_0.05_displacement.npy
+demos/GroundTruth/Cube_hole_order_1_0.05_stress.npy
